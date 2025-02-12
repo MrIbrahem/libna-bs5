@@ -48,6 +48,7 @@ body {
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -88,7 +89,109 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+
+.card .table-view {
+  margin-bottom: 0;
+  border-top: 0;
+  border-bottom: 0
+}
+
+.card .table-view .table-view-divider:first-child {
+  top: 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px
+}
+
+.card .table-view .table-view-divider:last-child {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px
+}
+
+.card .table-view-cell:last-child {
+  border-bottom: 0
+}
+
+.table-view {
+  padding-left: 0;
+  padding-right: 10px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  list-style: none;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd
+}
+
+.table-view-cell {
+  position: relative;
+  padding: 11px 0px 11px 15px;
+  border-bottom: 1px solid #ddd
+}
+
+.table-view-cell:last-child {
+  border-bottom: 0
+}
+
+.table-view-cell>a:not(.btn) {
+  position: relative;
+  display: block;
+  padding: inherit;
+  margin: -11px -65px -11px -15px;
+  color: inherit
+}
+
+.table-view-cell>a:not(.btn):active {
+  background-color: #eee
+}
+
+.table-view-divider {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 15px;
+  margin-top: -1px;
+  margin-left: 0;
+  font-weight: 500;
+  color: #999;
+  background-color: #fafafa;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd
+}
+
+
+.table-view {
+  background-color: transparent
+}
+
+.table-view .table-view-cell {
+  border-bottom: 1px solid #d9d9d9
+}
+
+.table-view .table-view-cell:last-child {
+  background-image: none
+}
+
+.table-view .table-view-cell>a:not(.btn):active {
+  color: inherit;
+  background-color: #e0e0e0
+}
+
+.table-view .table-view-cell>a:not(.btn):active .icon {
+  color: #fff
+}
+
+.table-view .table-view-divider {
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-top: 2px solid #a9a9a9;
+  border-bottom: 2px solid #a9a9a9
 }
