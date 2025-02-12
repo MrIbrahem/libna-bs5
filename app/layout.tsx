@@ -3,9 +3,9 @@ import Script from "next/script"
 import type React from "react" // Import React
 
 export const metadata: Metadata = {
-  title: "Triangle Area Calculator",
-  description: "Calculate the area of triangles easily",
-    generator: 'v0.dev'
+  title: "لبنة",
+  description: "حاسبة مساحة المثلث",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
