@@ -171,6 +171,27 @@ export default function TriangleAreaCalculator() {
 					</div>
 
 				)}
+
+				{activeTab === "about" && (
+					<div class="card">
+						<ul class="table-view" style="text-align: right;">
+							<li class="table-view-cell">
+								تم عمل هذا التطبيق للمساعدة في حساب مساحات الأراضي عبر تقسيمها لعدة مثلثات
+							</li>
+							<li class="table-view-cell">
+								يوفر التطبيق إمكانية جمع مثلثات قطعة الأرض كاملة دون الحاجة لتدوين مساحة المثلثات في ورقة أو عبر وسيلة أخرى
+							</li>
+							<li class="table-view-cell">
+								يمكن حساب عدد لا محدود من المثلثات عبر التطبيق
+							</li>
+							<li class="table-view-cell">
+								يوفر التطبيق الناتج بالمتر المربع وباللبنة العشاري التي تساوي 44.44 متر مربع.
+							</li>
+						</ul>
+					</div>
+				)}
+				{activeTab === "record" && (
+				)}
 			</main>
 
 			<footer className="bg-light py-4 text-center mt-auto">
