@@ -23,11 +23,13 @@ export default function TriangleAreaCalculator() {
 
 		setDisplaySides({ side1: a, side2: b, base: c })
 		setArea(isNaN(areaValue) ? 0 : areaValue)
-		setSides({ side1: "", side2: "", base: "" })
 	}
 
 	const handleAddToTotal = () => {
 		setTotalArea(totalArea + area)
+		setSides({ side1: "", side2: "", base: "" })
+		// clear area value
+		// setArea(0)
 	}
 
 	const copyToClipboard = (text: string) => {
