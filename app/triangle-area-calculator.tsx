@@ -29,7 +29,7 @@ export default function TriangleAreaCalculator() {
   return (
     <div className="min-vh-100 bg-light" dir="rtl">
       <header className="bg-white shadow-sm p-3 d-flex justify-content-between align-items-center">
-        <h1 className="h4 mb-0">حساب مساحة المثلثات</h1>
+        <h1 className="h4 mb-0">حساب مساحة المثلثات (لبنة)</h1>
         <button className="btn btn-link p-0">
           <Info className="text-primary" size={20} />
         </button>
