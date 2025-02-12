@@ -66,6 +66,7 @@ export default function TriangleAreaCalculator() {
         {activeTab === "about" && <AboutTab />}
       </main>
 
+
       <Footer />
     </div>
   )
