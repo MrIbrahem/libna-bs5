@@ -49,29 +49,17 @@ export default function MainTab({ addToTotalArea, addRecord, totalArea, convertT
 
       <div className="row g-2 mb-3">
         <div className="col-4">
-          <input
-            type="number"
-            className="form-control text-center"
-            placeholder="الضلع 1 (يمين)"
-            value={sides.side1}
+          <input type="number" className="form-control text-center" placeholder="الضلع 1 (يمين)" value={sides.side1}
             onChange={(e) => setSides({ ...sides, side1: e.target.value })}
           />
         </div>
         <div className="col-4">
-          <input
-            type="number"
-            className="form-control text-center"
-            placeholder="الضلع 2 (يسار)"
-            value={sides.side2}
+          <input type="number" className="form-control text-center" placeholder="الضلع 2 (يسار)" value={sides.side2}
             onChange={(e) => setSides({ ...sides, side2: e.target.value })}
           />
         </div>
         <div className="col-4">
-          <input
-            type="number"
-            className="form-control text-center"
-            placeholder="الوتر (قاعدة)"
-            value={sides.base}
+          <input type="number" className="form-control text-center" placeholder="الوتر (قاعدة)" value={sides.base}
             onChange={(e) => setSides({ ...sides, base: e.target.value })}
           />
         </div>
@@ -90,63 +78,74 @@ export default function MainTab({ addToTotalArea, addRecord, totalArea, convertT
         </div>
       </div>
 
-      <div className="mb-4">
-        <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded mb-2">
-          <span>متر مربع</span>
-          <div className="d-flex align-items-center">
-            <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
-              {area.toFixed(2)}
+
+      <div className="row g-2 mb-4">
+        <div className="col-6">
+          <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded mb-2">
+            <span>متر مربع</span>
+            <div className="d-flex align-items-center">
+              <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
+                {area.toFixed(2)}
+              </div>
+              <button className="btn btn-outline-secondary btn-sm" onClick={() =>
+                copyToClipboard(area.toFixed(2))}>
+                نسخ
+              </button>
             </div>
-            <button className="btn btn-outline-secondary btn-sm" onClick={() => copyToClipboard(area.toFixed(2))}>
-              نسخ
-            </button>
           </div>
         </div>
-
-        <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded">
-          <span>لبنة</span>
-          <div className="d-flex align-items-center">
-            <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
-              {convertToLebna(area)}
+        <div className="col-6">
+          <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded">
+            <span>لبنة</span>
+            <div className="d-flex align-items-center">
+              <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
+                {convertToLebna(area)}
+              </div>
+              <button className="btn btn-outline-secondary btn-sm" onClick={() =>
+                copyToClipboard(convertToLebna(area))}>
+                نسخ
+              </button>
             </div>
-            <button className="btn btn-outline-secondary btn-sm" onClick={() => copyToClipboard(convertToLebna(area))}>
-              نسخ
-            </button>
           </div>
         </div>
       </div>
 
+
       <h2 className="h5 mb-3">إجمالي مساحة المثلثات:</h2>
 
-      <div className="mb-2">
-        <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded mb-2">
-          <span>متر مربع</span>
-          <div className="d-flex align-items-center">
-            <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
-              {totalArea.toFixed(2)}
+      <div className="row g-2 mb-4">
+        <div className="col-6">
+          <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded mb-2">
+            <span>متر مربع</span>
+            <div className="d-flex align-items-center">
+              <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
+                {totalArea.toFixed(2)}
+              </div>
+              <button className="btn btn-outline-secondary btn-sm" onClick={() =>
+                copyToClipboard(totalArea.toFixed(2))}>
+                نسخ
+              </button>
             </div>
-            <button className="btn btn-outline-secondary btn-sm" onClick={() => copyToClipboard(totalArea.toFixed(2))}>
-              نسخ
-            </button>
           </div>
         </div>
-
-        <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded">
-          <span>لبنة</span>
-          <div className="d-flex align-items-center">
-            <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
-              {convertToLebna(totalArea)}
+        <div className="col-6">
+          <div className="d-flex justify-content-between align-items-center bg-white p-2 rounded">
+            <span>لبنة</span>
+            <div className="d-flex align-items-center">
+              <div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
+                {convertToLebna(totalArea)}
+              </div>
+              <button className="btn btn-outline-secondary btn-sm" onClick={() =>
+                copyToClipboard(convertToLebna(totalArea))}
+              >
+                نسخ
+              </button>
             </div>
-            <button
-              className="btn btn-outline-secondary btn-sm"
-              onClick={() => copyToClipboard(convertToLebna(totalArea))}
-            >
-              نسخ
-            </button>
           </div>
         </div>
       </div>
     </div>
+
   )
 }
 
