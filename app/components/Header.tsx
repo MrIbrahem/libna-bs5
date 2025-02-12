@@ -13,8 +13,6 @@ export default function Header() {
                     <button className="theme-toggle btn" aria-label="Toggle theme">
                         <i className="bi bi-moon-stars-fill"></i>
                     </button>
-                </div>
-                <div className="d-flex align-items-center">
                     <button className="btn btn-link p-0">
                         <Info className="text-primary" size={20} />
                     </button>
