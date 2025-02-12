@@ -80,29 +80,17 @@ export default function TriangleAreaCalculator() {
 
 						<div className="row g-2 mb-3">
 							<div className="col-4">
-								<input
-									type="number"
-									className="form-control text-center"
-									placeholder="الضلع 1 (يمين)"
-									value={sides.side1}
+								<input type="number" className="form-control text-center" placeholder="الضلع 1 (يمين)" value={sides.side1}
 									onChange={(e) => setSides({ ...sides, side1: e.target.value })}
 								/>
 							</div>
 							<div className="col-4">
-								<input
-									type="number"
-									className="form-control text-center"
-									placeholder="الضلع 2 (يسار)"
-									value={sides.side2}
+								<input type="number" className="form-control text-center" placeholder="الضلع 2 (يسار)" value={sides.side2}
 									onChange={(e) => setSides({ ...sides, side2: e.target.value })}
 								/>
 							</div>
 							<div className="col-4">
-								<input
-									type="number"
-									className="form-control text-center"
-									placeholder="الوتر (قاعدة)"
-									value={sides.base}
+								<input type="number" className="form-control text-center" placeholder="الوتر (قاعدة)" value={sides.base}
 									onChange={(e) => setSides({ ...sides, base: e.target.value })}
 								/>
 							</div>
@@ -140,9 +128,8 @@ export default function TriangleAreaCalculator() {
 									<div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
 										{convertToLebna(area)}
 									</div>
-									<button
-										className="btn btn-outline-secondary btn-sm"
-										onClick={() => copyToClipboard(convertToLebna(area))}
+									<button className="btn btn-outline-secondary btn-sm" onClick={() =>
+										copyToClipboard(convertToLebna(area))}
 									>
 										نسخ
 									</button>
@@ -159,9 +146,8 @@ export default function TriangleAreaCalculator() {
 									<div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
 										{totalArea.toFixed(2)}
 									</div>
-									<button
-										className="btn btn-outline-secondary btn-sm"
-										onClick={() => copyToClipboard(totalArea.toFixed(2))}
+									<button className="btn btn-outline-secondary btn-sm" onClick={() =>
+										copyToClipboard(totalArea.toFixed(2))}
 									>
 										نسخ
 									</button>
@@ -174,9 +160,8 @@ export default function TriangleAreaCalculator() {
 									<div className="bg-light p-2 rounded me-2" style={{ width: "120px", textAlign: "left" }}>
 										{convertToLebna(totalArea)}
 									</div>
-									<button
-										className="btn btn-outline-secondary btn-sm"
-										onClick={() => copyToClipboard(convertToLebna(totalArea))}
+									<button className="btn btn-outline-secondary btn-sm" onClick={() =>
+										copyToClipboard(convertToLebna(totalArea))}
 									>
 										نسخ
 									</button>
@@ -184,6 +169,7 @@ export default function TriangleAreaCalculator() {
 							</div>
 						</div>
 					</div>
+
 				)}
 			</main>
 
