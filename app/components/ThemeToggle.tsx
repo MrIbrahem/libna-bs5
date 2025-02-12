@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const themes = {
     system: { icon: "bi-circle-half", label: "Auto" },
@@ -6,77 +6,61 @@ const themes = {
     light: { icon: "bi-sun-fill", label: "Light" }
 };
 
-const getSystemTheme = () => {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-};
+const getSystemTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 const ThemeToggle = () => {
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
-    const [menuVisible, setMenuVisible] = useState(false);
-    const menuRef = useRef<HTMLDivElement | null>(null);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const updateTheme = (preference: string) => {
-            const resolvedTheme = preference === "system" ? getSystemTheme() : preference;
-            document.documentElement.setAttribute("data-bs-theme", resolvedTheme);
+            const appliedTheme = preference === "system" ? getSystemTheme() : preference;
+            document.documentElement.setAttribute("data-bs-theme", appliedTheme);
         };
-        updateTheme(theme);
 
-        const handleSystemChange = () => {
-            if (theme === "system") {
+        updateTheme(theme);
+        localStorage.setItem("theme", theme);
+
+        const systemThemeListener = (e: MediaQueryListEvent) => {
+            if (localStorage.getItem("theme") === "system") {
                 updateTheme("system");
             }
         };
 
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-        mediaQuery.addEventListener("change", handleSystemChange);
+        mediaQuery.addEventListener("change", systemThemeListener);
 
-        return () => {
-            mediaQuery.removeEventListener("change", handleSystemChange);
-        };
+        return () => mediaQuery.removeEventListener("change", systemThemeListener);
     }, [theme]);
 
-    const handleThemeChange = (value: string) => {
-        localStorage.setItem("theme", value);
-        setTheme(value);
-        setMenuVisible(false);
+    const toggleMenu = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setMenuOpen(!menuOpen);
+    };
+
+    const selectTheme = (selectedTheme: string) => {
+        setTheme(selectedTheme);
+        setMenuOpen(false);
     };
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-                setMenuVisible(false);
-            }
-        };
-
-        if (menuVisible) {
-            document.addEventListener("click", handleClickOutside);
-        } else {
-            document.removeEventListener("click", handleClickOutside);
+        const closeMenu = () => setMenuOpen(false);
+        if (menuOpen) {
+            document.addEventListener("click", closeMenu);
         }
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, [menuVisible]);
+        return () => document.removeEventListener("click", closeMenu);
+    }, [menuOpen]);
 
     return (
-        <div className="relative inline-block">
-            <button
-                className="theme-toggle p-2 bg-gray-200 rounded"
-                onClick={() => setMenuVisible(!menuVisible)}
-            >
-                <i className={`bi ${themes[theme as keyof typeof themes].icon}`} />
+        <div className="relative">
+            <button className="theme-toggle btn" aria-label="Toggle theme" onClick={toggleMenu}>
+                <i className={`bi ${themes[theme as keyof typeof themes].icon}`}></i>
             </button>
-            {menuVisible && (
-                <div ref={menuRef} className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-md">
+            {menuOpen && (
+                <div className="theme-menu absolute top-full mt-2 right-0 bg-white shadow-md rounded-lg p-2 w-36">
                     {Object.entries(themes).map(([value, { icon, label }]) => (
-                        <button
-                            key={value}
-                            className="theme-menu-item flex items-center p-2 w-full hover:bg-gray-100"
-                            onClick={() => handleThemeChange(value)}
-                        >
-                            <i className={`bi ${icon} mr-2`} /> {label}
+                        <button key={value} className="flex items-center w-full p-2 hover:bg-gray-200" onClick={() => selectTheme(value)}>
+                            <i className={`bi ${icon} mr-2`}></i> {label}
                         </button>
                     ))}
                 </div>

@@ -6,7 +6,6 @@ import RecordTab from "./components/RecordTab"
 import AboutTab from "./components/AboutTab"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import ThemeToggle from "./components/ThemeToggle"
 
 const LEBNA_CONVERSION = 44.44 // 1 لبنة = 44.44 m²
 
@@ -67,7 +66,7 @@ export default function TriangleAreaCalculator() {
         {activeTab === "about" && <AboutTab />}
       </main>
 
-	  <ThemeToggle />
+
       <Footer />
     </div>
   )
