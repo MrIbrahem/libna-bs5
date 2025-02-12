@@ -18,6 +18,11 @@ export default function TriangleAreaCalculator() {
 		const a = Number(sides.side1)
 		const b = Number(sides.side2)
 		const c = Number(sides.base)
+		// Validate triangle inequality theorem
+		if (a + b <= c || b + c <= a || a + c <= b) {
+			alert("الأطوال المدخلة لا تشكل مثلثاً صحيحاً")
+			return
+		}
 		const s = (a + b + c) / 2
 		const areaValue = Math.sqrt(s * (s - a) * (s - b) * (s - c))
 
@@ -175,24 +180,58 @@ export default function TriangleAreaCalculator() {
 				)}
 
 				{activeTab === "about" && (
-					<div class="card">
-						<ul class="table-view" style="text-align: right;">
-							<li class="table-view-cell">
+					<div className="card">
+						<ul className="table-view" style={{ textAlign: "right" }}>
+							<li className="table-view-cell">
 								تم عمل هذا التطبيق للمساعدة في حساب مساحات الأراضي عبر تقسيمها لعدة مثلثات
 							</li>
-							<li class="table-view-cell">
+							<li className="table-view-cell">
 								يوفر التطبيق إمكانية جمع مثلثات قطعة الأرض كاملة دون الحاجة لتدوين مساحة المثلثات في ورقة أو عبر وسيلة أخرى
 							</li>
-							<li class="table-view-cell">
+							<li className="table-view-cell">
 								يمكن حساب عدد لا محدود من المثلثات عبر التطبيق
 							</li>
-							<li class="table-view-cell">
+							<li className="table-view-cell">
 								يوفر التطبيق الناتج بالمتر المربع وباللبنة العشاري التي تساوي 44.44 متر مربع.
 							</li>
 						</ul>
 					</div>
 				)}
 				{activeTab === "record" && (
+					<div className="card">
+						<div className="card-header">
+							<h5 className="card-title">سجل المساحات</h5>
+						</div>
+						<div className="card-body">
+							<div style={{ padding: "5px 30px 5px 5px" }}>
+								<table id="allrows" className="table table-striped" style={{ width: "97%" }}>
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>الضلع 1 (يمين)</th>
+											<th>الضلع 2 (يسار)</th>
+											<th>الوتر</th>
+											<th>المساحة (م2)</th>
+											<th>المساحة (لبنة)</th>
+										</tr>
+									</thead>
+									<tbody>
+										{records.map((record, index) => (
+											<tr key={index}>
+												<td>{index + 1}</td>
+												<td>{record.side1}</td>
+												<td>{record.side2}</td>
+												<td>{record.base}</td>
+												<td>{record.area.toFixed(2)}</td>
+												<td>{convertToLebna(record.area)}</td>
+											</tr>
+										))}
+									</tbody>
+									<tfoot></tfoot>
+								</table>
+							</div>
+						</div>
+					</div>
 				)}
 			</main>
 
