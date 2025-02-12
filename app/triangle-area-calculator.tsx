@@ -1,11 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { Info } from "lucide-react"
 import MainTab from "./components/MainTab"
 import RecordTab from "./components/RecordTab"
 import AboutTab from "./components/AboutTab"
 import Footer from "./components/Footer"
+import Header from "./components/Header"
 
 const LEBNA_CONVERSION = 44.44 // 1 لبنة = 44.44 m²
 
@@ -28,13 +28,7 @@ export default function TriangleAreaCalculator() {
 
   return (
     <div className="min-vh-100 bg-light" dir="rtl">
-      <header className="bg-white shadow-sm p-3 d-flex justify-content-between align-items-center">
-        <h1 className="h4 mb-0">حساب مساحة المثلثات (لبنة)</h1>
-        <button className="btn btn-link p-0">
-          <Info className="text-primary" size={20} />
-        </button>
-      </header>
-
+	  <Header />
       <main className="container py-4" style={{ maxWidth: "540px" }}>
         <ul className="nav nav-tabs mb-4">
           <li className="nav-item">
